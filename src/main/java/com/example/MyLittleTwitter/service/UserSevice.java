@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class UserSevice implements UserDetailsService {
     private UserRepo userRepo;
 
     @Autowired
-    MailSender mailSender;
+    private MailSender mailSender;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -46,7 +47,7 @@ public class UserSevice implements UserDetailsService {
     }
 
     private void sendMessage(User user) {
-        if(!org.springframework.util.StringUtils.isEmpty(user.getEmail())) {
+        if (!org.springframework.util.StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
                             "Welcome to MyLittleTwitter. Please, visit next link: http://localhost:8080/activate/%s",
@@ -92,7 +93,6 @@ public class UserSevice implements UserDetailsService {
         }
 
         userRepo.save(user);
-
     }
 
     public void updateProfile(User user, String password, String email) {
@@ -118,6 +118,6 @@ public class UserSevice implements UserDetailsService {
         if (isEmailChanged) {
             sendMessage(user);
         }
+
     }
 }
-

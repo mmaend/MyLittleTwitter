@@ -14,9 +14,11 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
     @Autowired
     private UserSevice userSevice;
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public String userList(Model model) {
@@ -43,8 +45,9 @@ public class UserController {
 
         return "redirect:/user";
     }
+
     @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user) {
+    public String profile(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
 
@@ -58,6 +61,7 @@ public class UserController {
             @RequestParam String email
     ) {
         userSevice.updateProfile(user, password, email);
+
         return "redirect:/user/profile";
     }
 }
