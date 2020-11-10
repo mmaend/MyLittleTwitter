@@ -1,7 +1,6 @@
 package com.example.MyLittleTwitter.service;
 
 
-import antlr.StringUtils;
 import com.example.MyLittleTwitter.domain.Role;
 import com.example.MyLittleTwitter.domain.User;
 import com.example.MyLittleTwitter.repos.UserRepo;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 
 import java.util.*;
 import java.util.stream.Collectors;
