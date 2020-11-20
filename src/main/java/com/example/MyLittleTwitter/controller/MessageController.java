@@ -151,7 +151,7 @@ public class MessageController {
 
             saveFile(message, file);
 
-            messageRepo.save(message);
+            messageRepo.save(message); 
         }
 
         return "redirect:/user-messages/" + user;
